@@ -1,0 +1,6 @@
+class RscTitles {
+	#include "BlueHud\RscTitles.hpp"
+};
+class CfgFunctions {
+	#include "BlueHud\CfgFunctions.hpp"
+};
