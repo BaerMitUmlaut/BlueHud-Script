@@ -4,3 +4,4 @@ class RscTitles {
 class CfgFunctions {
 	#include "BlueHud\CfgFunctions.hpp"
 };
+#include "BlueHud\Dialog.hpp"
