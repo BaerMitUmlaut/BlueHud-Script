@@ -20,6 +20,14 @@ if (isServer && isMultiplayer) exitWith {
 };
 
 [] spawn {
+	//Mission Root method by Karel Moricky via Killzonekid
+	BlueHud_MissionRoot = call {
+		private "_arr";
+		_arr = toArray str missionConfigFile;
+		_arr resize (count _arr - 15);
+		toString _arr
+	};
+
 	//Load settings stored in profile, if not present use default settings
 	BlueHudSettings = profileNamespace getVariable ["BlueHudSettings", [false, false, true, [0,0,0], false, 0.08]];
 	//Backwards compatibility

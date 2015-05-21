@@ -47,7 +47,7 @@ _footer = "};";
 //Draws the squad on the HUD
 _drawSquad = format ["{
 	if !(player == _x) then {
-		(uiNamespace getVariable 'BlueHudMap') drawIcon [('BlueHud\UI\' + (_x call BlueHud_fnc_getRole) + '.paa'),
+		(uiNamespace getVariable 'BlueHudMap') drawIcon [(BlueHud_MissionRoot + 'BlueHud\UI\' + (_x call BlueHud_fnc_getRole) + '.paa'),
 			(_x call BlueHud_fnc_getColor),
 			([((visiblePosition player) vectorDiff (visiblePosition _x)), ([] call BlueHud_fnc_getEyeDir)] call BlueHud_fnc_vectorRotate) vectorAdd %1,
 			%2, %2,
@@ -60,7 +60,7 @@ _drawSquad = format ["{
 _drawProximity = format ["{
 	if ((side group _x) == (side group player) && player distance _x <= 20) then {
 		if !(player == _x) then {
-			(uiNamespace getVariable 'BlueHudMap') drawIcon [('BlueHud\UI\' + (_x call BlueHud_fnc_getRole) + '.paa'),
+			(uiNamespace getVariable 'BlueHudMap') drawIcon [(BlueHud_MissionRoot + 'BlueHud\UI\' + (_x call BlueHud_fnc_getRole) + '.paa'),
 				(_x call BlueHud_fnc_getColor),
 				([((visiblePosition player) vectorDiff (visiblePosition _x)), ([] call BlueHud_fnc_getEyeDir)] call BlueHud_fnc_vectorRotate) vectorAdd %1,
 				%2, %2,
@@ -71,13 +71,13 @@ _drawProximity = format ["{
 } foreach ((getPos player) nearEntities ['CAManBase', 25]);", _realCenter, _iconSizeSmall];
 
 //Draws the little dot that represents the player
-_drawPlayer = format ["(uiNamespace getVariable 'BlueHudMap') drawIcon ['BlueHud\UI\Player.paa', (player call BlueHud_fnc_getColor), %1, %2, %2, 0, '', false];", _realCenter, _iconSizeBig];
+_drawPlayer = format ["(uiNamespace getVariable 'BlueHudMap') drawIcon [BlueHud_MissionRoot + 'BlueHud\UI\Player.paa', (player call BlueHud_fnc_getColor), %1, %2, %2, 0, '', false];", _realCenter, _iconSizeBig];
 
 _drawCompass = format ["if ('ItemCompass' in assignedItems player) then {
-	(uiNamespace getVariable 'BlueHudMap') drawIcon ['BlueHud\UI\North.paa', [1,1,1,BlueHudCurrentAlpha], ([[0,18,0], (([] call BlueHud_fnc_getEyeDir) + 180)] call BlueHud_fnc_vectorRotate) vectorAdd %1, %2, %2, (([] call BlueHud_fnc_getEyeDir) * -1 - 180), '', false];
-	(uiNamespace getVariable 'BlueHudMap') drawIcon ['BlueHud\UI\West.paa', [1,1,1,BlueHudCurrentAlpha], ([[0,18,0], (([] call BlueHud_fnc_getEyeDir) - 90)] call BlueHud_fnc_vectorRotate) vectorAdd %1, %2, %2, (([] call BlueHud_fnc_getEyeDir) * -1 + 90), '', false];
-	(uiNamespace getVariable 'BlueHudMap') drawIcon ['BlueHud\UI\East.paa', [1,1,1,BlueHudCurrentAlpha], ([[0,18,0], (([] call BlueHud_fnc_getEyeDir) + 90)] call BlueHud_fnc_vectorRotate) vectorAdd %1, %2, %2, (([] call BlueHud_fnc_getEyeDir) * -1 - 90), '', false];
-	(uiNamespace getVariable 'BlueHudMap') drawIcon ['BlueHud\UI\South.paa', [1,1,1,BlueHudCurrentAlpha], ([[0,18,0], ([] call BlueHud_fnc_getEyeDir)] call BlueHud_fnc_vectorRotate) vectorAdd %1, %2, %2, (([] call BlueHud_fnc_getEyeDir) * -1), '', false];
+	(uiNamespace getVariable 'BlueHudMap') drawIcon [BlueHud_MissionRoot + 'BlueHud\UI\North.paa', [1,1,1,BlueHudCurrentAlpha], ([[0,18,0], (([] call BlueHud_fnc_getEyeDir) + 180)] call BlueHud_fnc_vectorRotate) vectorAdd %1, %2, %2, (([] call BlueHud_fnc_getEyeDir) * -1 - 180), '', false];
+	(uiNamespace getVariable 'BlueHudMap') drawIcon [BlueHud_MissionRoot + 'BlueHud\UI\West.paa', [1,1,1,BlueHudCurrentAlpha], ([[0,18,0], (([] call BlueHud_fnc_getEyeDir) - 90)] call BlueHud_fnc_vectorRotate) vectorAdd %1, %2, %2, (([] call BlueHud_fnc_getEyeDir) * -1 + 90), '', false];
+	(uiNamespace getVariable 'BlueHudMap') drawIcon [BlueHud_MissionRoot + 'BlueHud\UI\East.paa', [1,1,1,BlueHudCurrentAlpha], ([[0,18,0], (([] call BlueHud_fnc_getEyeDir) + 90)] call BlueHud_fnc_vectorRotate) vectorAdd %1, %2, %2, (([] call BlueHud_fnc_getEyeDir) * -1 - 90), '', false];
+	(uiNamespace getVariable 'BlueHudMap') drawIcon [BlueHud_MissionRoot + 'BlueHud\UI\South.paa', [1,1,1,BlueHudCurrentAlpha], ([[0,18,0], ([] call BlueHud_fnc_getEyeDir)] call BlueHud_fnc_vectorRotate) vectorAdd %1, %2, %2, (([] call BlueHud_fnc_getEyeDir) * -1), '', false];
 };", _realCenter, _iconSizeBig];
 
 //Handles HUD fade-out
